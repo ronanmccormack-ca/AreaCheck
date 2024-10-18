@@ -885,4 +885,4 @@ def display_property_data(n_clicks, civic_number, unit_number, std_street):
 
 # Run the Dash app
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
