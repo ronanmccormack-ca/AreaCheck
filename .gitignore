@@ -1,0 +1,18 @@
+# created by virtualenv automatically
+# Ignore Python bytecode
+*.py[cod]
+__pycache__/
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore PyCharm settings
+.idea/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore environment variable files
+.env
