@@ -596,9 +596,9 @@ app.layout = dbc.Container([  # Use dbc.Container for better spacing control
     # Navbar component with logo and blue text/nav items
     dbc.NavbarSimple(
         children=[
-            dbc.NavItem(dbc.NavLink("GitHub", href="https://github.com/ronanmccormack-ca", style={"color": "#129ad7", "font-size": "18px"})),
+            dbc.NavItem(dbc.NavLink("GitHub", href="https://github.com/ronanmccormack-ca/AreaCheck", style={"color": "#129ad7", "font-size": "18px"})),
             dbc.NavItem(dbc.NavLink("LinkedIn", href="https://www.linkedin.com/in/ronan-mccormack/", style={"color": "#129ad7", "font-size": "18px"})),
-            dbc.NavItem(dbc.NavLink("Contact Me", href="#", style={"color": "#129ad7", "font-size": "18px"})),
+            dbc.NavItem(dbc.NavLink("Contact Me", href="mailto:info@datahouse.ca", style={"color": "#129ad7", "font-size": "18px"})),
         ],
         brand=html.Div([
             html.Img(src="assets/logo.png", height="90px", style={"margin-right": "10px"}),
