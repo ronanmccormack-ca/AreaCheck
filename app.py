@@ -8,6 +8,7 @@ import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 import numpy as np
 from scipy.stats import gaussian_kde
+import os
 
 
 def has_from_civic_number(civic_number, std_street):
@@ -885,4 +886,5 @@ def display_property_data(n_clicks, civic_number, unit_number, std_street):
 
 # Run the Dash app
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    port = int(os.environ.get("PORT", 8050))  # Default port 8050 if PORT is not set
+    app.run_server(debug=False, host="0.0.0.0", port=port)
