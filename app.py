@@ -275,6 +275,13 @@ def plot_property_from_dict_plotly(data_list):
         plot_bgcolor='white',
         showlegend=True,
         margin=dict(t=20, b=40),
+        legend=dict(
+            orientation="h",  # Horizontal legend
+            yanchor="bottom",
+            y=1.1,  # Moves legend above the plot
+            xanchor="center",
+            x=0.5  # Centers the legend
+        ),
         xaxis=dict(
             tickmode='array',
             tickvals=years,
@@ -558,6 +565,9 @@ def gather_property_data_for_years(civic_number, std_street, years):
 
     return all_data
 
+def format_tax_levy(value):
+    return f"${value:,.2f}" if value is not None else "N/A"
+
 
 def extract_average_value_change(data_list):
     """
@@ -700,21 +710,23 @@ app.layout = dbc.Container([  # Use dbc.Container for better spacing control
 
         # Div for the property graph
         dbc.Col(
-            dcc.Graph(id='property-graph'),
-            width=6, className="mb-4"
+            dcc.Graph(id='property-graph',style={'width': '100%'}),
+            width=12, className="mb-4"
         ),
-
+    ]),
+    # A container for both the map and the property graphs
+    dbc.Row([
         # Div for the neighbourhood graph
         dbc.Col(
-            dcc.Graph(id='property-graph1'),
-            width=6, className="mb-4"
+            dcc.Graph(id='property-graph1',style={'width': '100%'}),
+            width=12, className="mb-4"
         ),
     ]),
 
     # Div for the map graph
     dbc.Row([
         dbc.Col(
-            dcc.Graph(id='map-graph'),
+            dcc.Graph(id='map-graph',style={'width': '100%'}),
             width=12
         )
     ]),
@@ -773,7 +785,7 @@ def display_property_data(n_clicks, civic_number, unit_number, std_street):
         neighbourhood_code = extract_last_neighbourhood_code(property_data)
 
         # Fetch neighbourhood data for 2020-2024
-        neighbourhood_data = gather_property_data_for_years(civic_number, std_street, [2020, 2021, 2022, 2023, 2024])
+        neighbourhood_data = gather_property_data_for_years(civic_number, std_street, [2020, 2021, 2022, 2023, 2024, 2025])
 
         # Plot coordinates on the map if land_coordinate exists
         if land_coordinate:
@@ -827,7 +839,7 @@ def display_property_data(n_clicks, civic_number, unit_number, std_street):
                     dbc.ListGroupItem(f"Zoning: {property_data[-1]['zoning_district']}"),
                     dbc.ListGroupItem(f"Year Built: {property_data[-1]['year_built']}"),
                     dbc.ListGroupItem(f"Latest Assessment: {property_data[-1]['report_year']}"),
-                    dbc.ListGroupItem(f"Gross Taxes in {property_data[-1]['report_year']}: ${property_data[-1]['tax_levy']:,.2f}")
+                    dbc.ListGroupItem(f"Gross Taxes in {property_data[-1]['report_year']}: {format_tax_levy(property_data[-1]['tax_levy'])}")
                 ])
             ]),
             color="#129ad7",
