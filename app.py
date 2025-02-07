@@ -605,11 +605,20 @@ app.layout = dbc.Container([  # Use dbc.Container for better spacing control
 
     # Navbar component with logo and blue text/nav items
     dbc.NavbarSimple(
-        children=[
-            dbc.NavItem(dbc.NavLink("GitHub", href="https://github.com/ronanmccormack-ca/AreaCheck", style={"color": "#129ad7", "font-size": "18px"})),
-            dbc.NavItem(dbc.NavLink("LinkedIn", href="https://www.linkedin.com/in/ronan-mccormack/", style={"color": "#129ad7", "font-size": "18px"})),
-            dbc.NavItem(dbc.NavLink("Contact Me", href="mailto:info@datahouse.ca", style={"color": "#129ad7", "font-size": "18px"})),
-        ],
+    children=[
+        dbc.NavItem(dbc.NavLink("GitHub", href="https://github.com/ronanmccormack-ca/AreaCheck", style={"color": "#129ad7", "font-size": "18px"})),
+        dbc.NavItem(dbc.NavLink("LinkedIn", href="https://www.linkedin.com/in/ronan-mccormack/", style={"color": "#129ad7", "font-size": "18px"})),
+        dbc.NavItem(dbc.NavLink("Contact Me", href="mailto:info@datahouse.ca", style={"color": "#129ad7", "font-size": "18px"})),
+        html.A(
+            href="https://www.buymeacoffee.com/ronanmccormack",
+            target="_blank",
+            children=html.Img(
+                src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png",
+                alt="Buy Me A Coffee",
+                style={"height": "40px", "width": "145px", "margin-left": "10px"}
+            )
+        )
+    ],
         brand=html.Div([
             html.Img(src="assets/logo.png", height="90px", style={"margin-right": "10px"}),
             html.Span("AreaCheck", style={"color": "#129ad7", "font-size": "24px", "font-weight": "bold"})
